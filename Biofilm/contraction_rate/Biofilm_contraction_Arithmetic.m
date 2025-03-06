@@ -1,6 +1,6 @@
 %% Biofilm Model - Contraction rate
-% This script solves the Biofilm model using different iterative 
-% schemes (M scheme, N scheme, M-Adaptive scheme) and visualizes the contraction rate.
+% This script plot the contraction rate of the Biofilm model using different iterative 
+% schemes (M scheme, N scheme, M-Adaptive scheme).
 
 clc
 clear all;
