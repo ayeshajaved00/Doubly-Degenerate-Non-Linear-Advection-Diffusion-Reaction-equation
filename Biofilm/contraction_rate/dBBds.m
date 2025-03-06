@@ -1,13 +1,9 @@
- function BB_values = dBBds(S)
+function BB_values = dBBds(S)
 global m_exp;
 global u_star;
 global phi_ustar;
 
-%phi_prime_values = @(S) (m_exp*S.^(m_exp-1))./ ((1-S).^(m_exp+1));
-
-%u_star = 0.326220512390137;
-
-    Nn = length(S);
+   Nn = length(S);
 
     BB_values = zeros(1, Nn);
 
