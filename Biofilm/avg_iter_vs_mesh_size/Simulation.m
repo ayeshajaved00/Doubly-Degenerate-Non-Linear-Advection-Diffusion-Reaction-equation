@@ -1,6 +1,7 @@
 %% Biofilm Model - Average iterations Vs Error
-% This script solves the Biofilm model using different iterative 
-% schemes (M scheme, N scheme, M-Adaptive scheme) and visualizes the average number of iterations Vs mesh size.
+% This script shows the plot of average number of iterations Vs mesh size 
+% of the Biofilm model using different iterative 
+% schemes (M scheme, N scheme, M-Adaptive scheme).
 
 clear all;
 close all;
