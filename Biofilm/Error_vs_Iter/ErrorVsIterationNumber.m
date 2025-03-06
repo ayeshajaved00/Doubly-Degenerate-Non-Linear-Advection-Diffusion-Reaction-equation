@@ -1,6 +1,6 @@
 %% Biofilm Model - Error Vs iteration no
-% This script solves the Biofilm model using different iterative 
-% schemes (M scheme, N scheme, M-Adaptive scheme) and visualizes the Error Vs iteration number.
+% This script shows the plot of Error Vs iter numbers of  the Biofilm model using different iterative 
+% schemes (M scheme, N scheme, M-Adaptive scheme).
 
 clear all;
 close all;
