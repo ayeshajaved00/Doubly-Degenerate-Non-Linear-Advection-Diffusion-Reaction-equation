@@ -1,6 +1,6 @@
 %% Biofilm Model - Contraction rate
 % This script solves the Biofilm model using iterative 
-% scheme (Newton scheme) and visualizes the contraction rate.
+% scheme (M scheme) and visualizes the contraction rate.
 
 clc;
 clear all;
