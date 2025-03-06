@@ -1,6 +1,6 @@
 %% Biofilm Model - Convergence Order
-% This script solves the Biofilm model using different iterative 
-% schemes (M scheme, N scheme, M-Adaptive scheme) and visualizes the Convergence order.
+% This script shows convergence order of the Biofilm model using different iterative 
+% schemes (M scheme, N scheme, M-Adaptive scheme).
 
 clear all;
 close all;
