@@ -4,8 +4,6 @@ global m_exp;
 global u_star;
 global phi_ustar;
 
-%p = (phi_ustar + S - u_star).^(1/4);
-
     Nn = length(S);
 
     bb_values = zeros(1, Nn);
