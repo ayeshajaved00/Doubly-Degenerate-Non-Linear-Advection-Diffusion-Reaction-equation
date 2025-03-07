@@ -76,7 +76,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │-- 📂 2D_Richards/Average_iter_Vs_mesh
 │   ├── RSimulation.m                               # MATLAB script for Average number of iterations Vs mesh size (h)
 │-- 📂 2D_Toymodel/Average_iter_Vs_mesh
-│   ├── 2DDSimulation.m                              # MATLAB script for Average number of iterations Vs mesh size (h)
+│   ├── DDSimulation.m                              # MATLAB script for Average number of iterations Vs mesh size (h)
 
 
 
