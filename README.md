@@ -1,4 +1,4 @@
-## Degenerate-Non-Linear-Advection-Diffusion-Reaction-equation
+## Double-Degenerate-Non-Linear-Advection-Diffusion-Reaction-equation
 This repository contains numerical test cases for different nonlinear equations solved using three iterative schemes: **Newton Scheme**, **M Scheme**, and **Adaptive M Scheme**. The equations included are
 
 1. **Porous Medium Equation**
