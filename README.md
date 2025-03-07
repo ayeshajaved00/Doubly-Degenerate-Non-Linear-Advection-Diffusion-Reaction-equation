@@ -6,7 +6,30 @@ This repository contains numerical test cases for different nonlinear equations 
 3. **Richards Equation with Advection**
 4. **Double Degenerate Toy Model**
 
-Each equation has been implemented for both **1D** and **2D** cases. The initial condition for all cases is taken as the **Barenblatt solution**, with the small parameter  **m**  (Barenblatt parameter) set to **6**.
+Each equation has been implemented for both **1D** and **2D** cases. The initial condition for all cases is taken as the **Barenblatt solution**, with the parameter  **m**  (Barenblatt parameter) set to **6**.
+
+## Parameters
+
+The following parameters are used throughout the numerical simulations:
+
+- **T**: Total time (final time for the simulation)
+- **dt**: Time step (the size of each time step during the simulation)
+- **N**: Total number of time steps
+- **x**: Space grid (the spatial grid used for the discretization)
+- **ee**: Source term (external source or forcing term in the equation)
+- **M (MB,Mb)**: M scheme parameter (used in the M scheme method)
+- **n_values**: Number of mesh points
+- **L**: Left domain boundary (the left boundary for the spatial domain)
+- **R**: Right domain boundary (the right boundary for the spatial domain)
+
+## Mathematical Formulas
+**Contraction Rate**
+
+Contraction Rate (α_i) = error_i/ error_(i-1)  ` ∀ i ∈ N`
+
+**Convergence Order**
+
+Convergence Order = log( α_i / α_(i-1))      ` ∀ i ∈ N`
 
 ## 1D Numerical Tests
 For each equation in the 1D case, the following numerical experiments have been conducted:
