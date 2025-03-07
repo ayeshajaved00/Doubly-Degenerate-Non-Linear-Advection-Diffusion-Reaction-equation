@@ -1,4 +1,4 @@
-%% Biofilm Model - Contraction rate
+% Biofilm Model - Contraction rate
 % This script plot the contraction rate of the Biofilm model using different iterative 
 % schemes (M scheme, N scheme, M-Adaptive scheme).
 
@@ -8,7 +8,7 @@ close all;
 
 time_steps = [0.00001,0.000025,0.00005,0.0001,0.00025,0.0005,0.001, 0.0025,0.005, 0.01, 0.025,0.05,0.1,0.25,0.5,1];
 
-%% h= 0.02 , N=800,  err = sqrt(trapz(x, (S_iter - S_intiter).^2 + dt * (dW_dx.^2)));
+% h= 0.02 , N=800,  err = sqrt(trapz(x, (S_iter - S_intiter).^2 + dt * (dW_dx.^2)));
 
  Arithmetic_mean_M = [4.427404744340027e-06,1.520916551476124e-05,1.301758886730194e-04,2.052423838360343e-04,0.001317005199643,0.003000469236908,0.009934534389219,0.042089480033151,0.050580998037892,0.013048953309394,0.053153716691635,0.229543336753767,0.540347646862752,0.809391447751282,0.971641116803704,0.969632860354972];
 
