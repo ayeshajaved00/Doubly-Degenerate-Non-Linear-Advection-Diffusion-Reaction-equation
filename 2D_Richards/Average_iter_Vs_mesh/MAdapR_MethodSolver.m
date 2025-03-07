@@ -1,0 +1,198 @@
+function [ MAdap_iter_per_step_values, h_MAdap_x_values] = MAdapR_MethodSolver(Lx, Rx, Ly, Ry, nx_values, ny_values, b_values, B_values, T, dt, ee, m)
+
+global Ks
+global lambda
+
+MAdap_iter_per_step_values = zeros(1, length(nx_values));
+h_MAdap_x_values = zeros(size(nx_values));
+
+Mb = 1; 
+MB = 1;
+
+%% Adaptivity parameters
+adap_num_values = 16; 
+adap_start_value = -10; % Starting value
+adap_end_value = -2; % Ending value
+adap_step_size = (adap_end_value - adap_start_value) / (adap_num_values - 1);
+
+for nx_index = 1:length(nx_values)
+
+    nx = nx_values(nx_index);
+    ny = ny_values(nx_index);
+
+    dx = (Rx - Lx) / nx;
+    dy = (Ry - Ly) / ny;
+
+    hx = 1 / dx;
+
+    x = zeros(1, nx + 1);
+    for i = 1:nx + 1
+        x(i) = Lx + dx * (i - 1);
+    end
+
+    y = zeros(1, ny + 1);
+    for i = 1:ny + 1
+        y(i) = Ly + dy * (i - 1);
+    end
+
+    dtdx = dt / (dx^2);
+
+    %% The Number of Time Steps
+    N = floor(T / dt) + 1;
+    t = zeros(1, N);
+
+    [X, Y] = meshgrid(x, y);
+
+    % Initial Condition 
+    S0 = RBarenblatt(X, Y, m, 0, 2);
+    S_current = S0;
+    b_n = S0; 
+
+    %% Basic iteration information
+    t_start = 1; t_end = N;
+    iteration_no = 50;   
+    diverge = 0;
+
+    %% Start of time loop 
+    tot_iter_number = 0;
+    for i = t_start:t_end
+        t(i) = (i - 1) * dt;
+
+        EA = [];
+
+        S_iter = S_current;
+
+        Mb(1) = Mb(end); Mb = [Mb(1)];
+        MB(1) = MB(end); MB = [MB(1)];
+
+        % Initial variable updates
+        S_iter = max(S_iter, 0);
+        index = idx(S_iter, b_values);
+
+        b_iter = Rbs(S_iter, index, b_values);  % This is the value of b at s^{i-1}_n
+        B_iter = RBB(S_iter, index, B_values); % This is the value of B at s^{i-1}_n
+        dbds_iter = Rdbds(S_iter, index, b_values); % This is the value of b' at s^{i-1}_n
+        dBds_iter = RdBBds(S_iter, index, B_values); % This is the value of B' at s^{i-1}_n
+        F_iter = Ks(b_iter, lambda); % This is the advection term
+
+        for V = 1:iteration_no 
+            %% Definition of Lb and LB
+            % M-scheme
+            Lb = min(max(dbds_iter + Mb(V) * dt, 2 * Mb(V) * dt), 1);
+            LB = min(max(dBds_iter + MB(V) * dt, 2 * MB(V) * dt), 1);
+
+            %% matrix calculation
+            Lmat = zeros((nx + 1) * (ny + 1), (nx + 1) * (ny + 1));
+            f = zeros(1, (nx + 1) * (ny + 1));
+
+            for ind = 1:(nx + 1) * (ny + 1)
+                k = floor(ind / (nx + 1));
+                j = ind - (nx + 1) * k;
+                k = k + 1;
+
+                if j == 0 || j == 1 || k == 1 || k == ny + 1
+                    f(ind) = 0;
+                    Lmat(ind, ind) = 1;
+                else
+                    Lmat(ind, ind) = (4 * (dtdx)) + (Lb(j, k) / LB(j, k)) * (1 - ee * dt); % for source term (1 - C * dt)
+                    Lmat(ind, ind - 1) = -(dtdx);
+                    Lmat(ind, ind + 1) = -(dtdx);
+                    Lmat(ind, ind - nx - 1) = -(dtdx);
+                    Lmat(ind, ind + nx + 1) = -(dtdx);
+
+                    f(ind) = b_n(j, k) + (1 - ee * dt) * ((Lb(j, k) / LB(j, k)) * B_iter(j, k) - ...
+                        b_iter(j, k)) + (dt / dx) * (-2 * F_iter(j, k) + F_iter(j + 1, k) + F_iter(j, k + 1));
+                end
+            end
+
+            A = Lmat;
+
+            if i == 1
+                W_intiter = B_iter;
+            else
+                W_intiter = W_iter;
+            end
+
+            W_iter = A \ f';
+            W_iter = reshape(W_iter, size(X));
+
+            S_intiter = S_iter;
+
+            S_iter = (1 ./ LB) .* (W_iter - B_iter) + S_intiter;
+
+            F_intiter = F_iter;
+
+            U_iter = b_iter + Lb .* (S_iter - S_intiter);
+
+            index = idx(S_iter, b_values);
+            b_iter = Rbs(S_iter, index, b_values); % This is the value of b at s^{i-1}_n
+            B_iter = RBB(S_iter, index, B_values); % This is the value of B at s^{i-1}_n
+            dbds_iter = Rdbds(S_iter, index, b_values); % This is the value of b' at s^{i-1}_n
+            dBds_iter = RdBBds(S_iter, index, B_values); % This is the value of B' at s^{i-1}_n
+            F_iter = Ks(b_iter, lambda); % This is the advection term
+
+            %% Error check
+            [dxW, dyW] = gradient(W_iter - W_intiter, dx, dy);
+            
+            err = sqrt(sum((Lb(:) .* LB(:)) .* (S_iter(:) - S_intiter(:)) .^ 2 * dx * dy + ...
+                dt * dx * dy * (dxW(:) .^ 2 + dyW(:) .^ 2)));
+
+            EA = [EA, err];   
+
+            tot_iter_number = tot_iter_number + 1;
+
+            %% Convergence Check
+            if err < 1e-6         
+                break;
+            elseif (isnan(err) || (err > 10))
+                diverge = 1;
+                break; 
+            end
+
+            %% Adaptivity
+            if rem(V, 3) == 2
+                U = U_iter - b_iter;
+                O = W_iter - B_iter;
+                dFiter = F_iter - F_intiter;
+
+                for j1 = 1:adap_num_values
+                    value = adap_start_value + (j1 - 1) * adap_step_size;
+                    value = 10 ^ value;
+                    Lb = min(max(dbds_iter + value * dt, 2 * value * dt), 1);
+                    LB = min(max(dBds_iter + value * dt, 2 * value * dt), 1);
+                    G = Reta(LB ./ Lb, U, O, dFiter, dt, dx * dy);
+                    if (G < err)
+                        break;
+                    end
+                end
+
+                Mb(V + 1) = value;
+                MB(V + 1) = value;
+
+            else
+                Mb(V + 1) = Mb(V);
+                MB(V + 1) = MB(V);
+            end
+        end
+
+        %% Variable Update
+        S_current = S_iter;
+        b_n = Rbs(S_current, index, b_values);
+
+        EA;
+
+        if diverge == 1
+            iter_per_timestep = inf;
+            break;
+        end
+    end
+
+    if diverge ~= 1
+        iter_per_timestep = tot_iter_number / t_end;
+    end
+
+    MAdap_iter_per_step_values(nx_index) = iter_per_timestep;
+    h_MAdap_x_values(nx_index) = hx;
+
+end
+end
