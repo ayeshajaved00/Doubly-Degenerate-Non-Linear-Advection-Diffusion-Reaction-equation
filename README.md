@@ -51,7 +51,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   │   ├── ErrorVsiterationNumber.m         # MATLAB script for Error vs Iteration Number
 │   ├── 📂 avg_iter_vs_mesh_size
 │   │   ├── Simulation.m                     # MATLAB script for Average number of iterations Vs mesh size (h)
-│   ├──  📂 Contraction_Rate
+│   ├── 📂 Contraction_Rate
 │   │   ├── M_scheme.m                        # MATLAB script for M scheme
 │   │   ├── MAdap_scheme.m                    # MATLAB script for adaptive M scheme
 │   │   ├── Newton_scheme.m                   # MATLAB script for Newton scheme
@@ -59,7 +59,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │-- 📂 1D_PME
 │   ├── 📂 Convergence_order                  
 │   │   ├── order_convergence.m               # MATLAB script for Convergence order
-│   ├──  📂 Contraction_Rate
+│   ├── 📂 Contraction_Rate
 │   │   ├── M_scheme.m                        # MATLAB script for M scheme
 │   │   ├── AdapM_scheme.m                    # MATLAB script for adaptive M scheme
 │   │   ├── Newton_scheme.m                   # MATLAB script for Newton scheme
@@ -93,7 +93,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   ├── 📂 average-iter_Vs_mesh-size
 │   │   ├── Simulation.m                           # MATLAB script for Average number of iterations Vs mesh size (h)
 │-- 📂 2D_Biofilm/Average_iter_Vs_mesh
-│   ├── BioSimulation.m
+│   ├── BioSimulation.m                             # MATLAB script for Average number of iterations Vs mesh size (h)
 │-- 📂 2D_PME/Average_iter_Vs_mesh                 
 │   ├── PSimulation.m                               # MATLAB script for Average number of iterations Vs mesh size (h)
 │-- 📂 2D_Richards/Average_iter_Vs_mesh
