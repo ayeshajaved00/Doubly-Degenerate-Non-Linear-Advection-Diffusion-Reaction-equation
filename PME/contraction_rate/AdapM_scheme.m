@@ -180,7 +180,7 @@ end
 if length(contraction_rates) < 3
     arithmetic = mean(contraction_rates); % Use mean of all if less than 3 rates
 else
-    arithmetic = mean(contraction_rates(end - 2:end)); % Use mean of last two rates
+    arithmetic = mean(contraction_rates(end - 2:end)); 
 end
 
 iter_per_timestep = tot_iter_number / t_end;
