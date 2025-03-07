@@ -19,7 +19,7 @@ For each equation in the 1D case, the following numerical experiments have been 
 In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been analyzed. The simulations were executed on the VSC supercomputer.
 
 ## Repository Structure
-
+```plaintext
 📂 **Doubly-Degenerate-Non-Linear-Advection-Diffusion-Reaction-equation**
 │-- 📂 **1D_Biofilm**
 │   ├── 📂 Convergence_order
