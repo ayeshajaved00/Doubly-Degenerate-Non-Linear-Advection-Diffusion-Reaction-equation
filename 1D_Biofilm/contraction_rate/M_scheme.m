@@ -133,7 +133,7 @@ for j = t_start:t_end
     if length(contraction_rates) < 3
         arithmetic_mean = mean(contraction_rates);  % Use mean of all if less than 3 rates
     else
-        arithmetic_mean = mean(contraction_rates(end - 2:end));  % Use mean of last two rates
+        arithmetic_mean = mean(contraction_rates(end - 2:end));  
     end
     %% Update current state
      S_current = S_iter;
