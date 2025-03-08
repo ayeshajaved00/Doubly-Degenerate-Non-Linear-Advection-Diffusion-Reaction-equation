@@ -49,7 +49,7 @@ contraction_rates = [];
 errors = []; 
 diverge = 0;
 
-iteration_no = 100; 
+iteration_no = 50; 
 Array_iterations = [];  
 
 %% Start of time loop
