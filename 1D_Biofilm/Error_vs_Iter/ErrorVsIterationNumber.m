@@ -41,8 +41,6 @@ for idx = 1:length(n_values)
         case 1
             L_value = 10;
  end   
-
-
     [M_iter_per_step_values, h_M_values, iteration_M_iter, EA_M,SM_iter] =  M_Error_MethodSolver(L, R, n_values(idx), T, dt, ee, m_exp);
     [N_iter_per_step_values, h_N_values, iteration_N_iter, EA_N,SN_iter] =  N_Error_MethodSolver(L, R, n_values(idx),  T, dt, ee, m_exp);
     [MAdap_iter_per_step_values, h_MAdap_values, iteration_MAdap_iter, EA_MAdap,Mb] = M_Error_Adap_MethodSolver(L, R, n_values(idx), T, dt, ee, m_exp);
