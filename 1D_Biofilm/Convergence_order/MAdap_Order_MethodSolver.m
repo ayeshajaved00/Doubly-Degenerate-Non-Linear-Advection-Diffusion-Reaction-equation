@@ -160,14 +160,13 @@ for n_index = 1:length(n_values)
             end
 
              if diverge == 1
-           
-                    Convergence_order = inf; 
+                 Convergence_order = inf; 
              end
              if diverge ~= 1
                  if length(orders) < 3
                     Convergence_order = mean(orders);  % Use mean of all if less than 3 rates
                  else
-                    Convergence_order = mean(orders(end - 2:end));  % Use mean of last two rates
+                    Convergence_order = mean(orders(end - 2:end));  
                  end
              end
         %% Variable Update
