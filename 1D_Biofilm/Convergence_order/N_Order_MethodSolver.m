@@ -119,7 +119,7 @@ function [h_N_values, average_orders_N, orders, EA_N, errors] = N_Order_MethodSo
                  if length(orders) < 3
                     Convergence_order = mean(orders);  % Use mean of all if less than 3 rates
                  else
-                    Convergence_order = mean(orders(end - 2:end));  % Use mean of last two rates
+                    Convergence_order = mean(orders(end - 2:end));  
                  end
              end
             %% Variable Update
