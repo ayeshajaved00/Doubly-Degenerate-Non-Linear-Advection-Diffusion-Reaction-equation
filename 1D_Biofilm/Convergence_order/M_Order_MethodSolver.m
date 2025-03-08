@@ -138,14 +138,7 @@ function [h_M_values,average_orders_M,orders] = M_Order_MethodSolver(L, R, n_val
             S_current = S_iter;
             b_n = bs(S_current);
             EA_M;
-
-            if diverge == 1
-                Convergence_order = inf;
-                break;
-            end
-             if diverge ~= 1
-                Convergence_order = mean(orders(end - 2:end));
-             end
+            
         end
 
         h_M_values(n_index) = h;
