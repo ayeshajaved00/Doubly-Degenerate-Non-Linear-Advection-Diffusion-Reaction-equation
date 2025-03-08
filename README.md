@@ -55,7 +55,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   │   ├── M_scheme.m                        # MATLAB script for M scheme
 │   │   ├── MAdap_scheme.m                    # MATLAB script for adaptive M scheme
 │   │   ├── Newton_scheme.m                   # MATLAB script for Newton scheme
-│   │   ├── Biofilm_contraction_Arithmetic.m  # The MATLAB script that runs all the results of the schemes and plots them
+│   │   ├── Biofilm_contraction_Arithmetic.m  # The MATLAB script that runs all the results of the schemes and plot them
 │-- 📂 1D_PME
 │   ├── 📂 Convergence_order                  
 │   │   ├── order_convergence.m               # MATLAB script for Convergence order
@@ -63,7 +63,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   │   ├── M_scheme.m                        # MATLAB script for M scheme
 │   │   ├── AdapM_scheme.m                    # MATLAB script for adaptive M scheme
 │   │   ├── Newton_scheme.m                   # MATLAB script for Newton scheme
-│   │   ├── Contraction_rate.m                # The MATLAB script that runs all the results of the schemes and plots them
+│   │   ├── Contraction_rate.m                # The MATLAB script that runs all the results of the schemes and plot them
 │   ├── 📂 avg_iter_vs_mesh_size
 │   │   ├── Simulation.m                       # MATLAB script for Average number of iterations Vs mesh size (h)
 │   ├── 📂 error_vs_iter
@@ -75,7 +75,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   │   ├── MScheme.m                            # MATLAB script for M scheme
 │   │   ├── Richards_Newton.m                    # MATLAB script for Newton scheme
 │   │   ├── Adap_Richards.m                      # MATLAB script for adaptive M scheme
-│   │   ├── contraction_Arithmetic.m             # The MATLAB script that runs all the results of the schemes and plots them
+│   │   ├── contraction_Arithmetic.m             # The MATLAB script that runs all the results of the schemes and plot them
 │   ├── 📂 Convergence_Order
 │   │   ├── order_convergenec.m                   # MATLAB script for Convergence order
 │   ├── 📂 Error_Vs_Iter
@@ -85,7 +85,7 @@ In 2D cases, only the **Average Number of Iterations vs. Mesh Size** has been an
 │   │   ├── DD_mixed.m                            # MATLAB script for M scheme
 │   │   ├── DD_Newton.m                           # MATLAB script for Newton scheme
 │   │   ├── DD_AdapM.m                            # MATLAB script for adaptive M scheme
-│   │   ├── Contraction_plot_Arithmetic.m         # MATLAB script that runs all the results of the schemes and plots them
+│   │   ├── Contraction_plot_Arithmetic.m         # MATLAB script that runs all the results of the schemes and plot them
 │   ├── 📂 Convergence_Order
 │   │   ├── order_convergence.m                   # MATLAB script for convergence order
 │   ├── 📂 error_vs_iter
