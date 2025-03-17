@@ -98,7 +98,7 @@ function [AdapM_iter_per_step_values, h_MAdap_values] = AdapM_MethodSolver(L, R,
                 end
                 
                 %% Adaptivity
-                if rem(i, 2) == 1
+                if rem(i, 3) == 2
                     U = U_iter - b_iter;
                     O = W_iter - B_iter;
                     
