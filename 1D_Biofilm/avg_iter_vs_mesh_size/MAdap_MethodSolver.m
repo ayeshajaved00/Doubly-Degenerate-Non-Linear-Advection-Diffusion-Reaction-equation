@@ -12,7 +12,7 @@ function [MAdap_iter_per_step_values, h_MAdap_values] = MAdap_MethodSolver(L, R,
     MB = 1;
 
     %% Adaptivity parameters
-    adap_num_values = 25;
+    adap_num_values = 297;
     adap_start_value = -10;
     adap_end_value = -2;
     adap_step_size = (adap_end_value - adap_start_value) / (adap_num_values - 1);
