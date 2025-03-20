@@ -8,7 +8,7 @@ AdapM_iter_per_step_values = zeros(size(n_values));
 h_Adap_values = zeros(size(n_values));
 
 %% Adaptivity parameters
-adap_num_values = 15; % Number of values in the range
+adap_num_values = 25; % Number of values in the range
 adap_start_value = -10; % Starting value
 adap_end_value = -2; % Ending value
 Mb = 1; MB = 1;
@@ -118,12 +118,12 @@ for n_index = 1:length(n_values)
             end
 
             %% Adaptivity
-            if rem(i, 3) == 1
+            if rem(i, 2) == 1
                 U = U_iter - b_iter;
                 O = W_iter - B_iter;
 
-                for j1 = 1:adap_num_values
-                    value = adap_start_value + (j1-1) * adap_step_size;
+                for j1 = 0:adap_num_values
+                    value = adap_start_value + (j1) * adap_step_size;
                     value = 10.^value;
                     Lb = min(max(dbds_iter + value * dt, 2 * value * dt), 1);
                     LB = min(max(dBds_iter + value * dt, 2 * value * dt), 1);
