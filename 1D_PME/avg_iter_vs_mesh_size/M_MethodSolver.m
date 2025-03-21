@@ -84,7 +84,7 @@ function [M_iter_per_step_values, h_M_values] = M_MethodSolver(L, R, n_values, T
 
                 % Error Calculation
                 dW_dx = gradient(W_iter - W_intiter, dx);
-                err = sqrt(trapz(x, (Lb .* LB .* (S_iter - S_intiter).^2)) + dt * trapz(x, (dW_dx.^2)));
+                err = sqrt(trapz(x, (Lb .* LB .* (S_iter - S_intiter).^2 + dt *dW_dx.^2)));
 
                 EA = [EA, err];
                 tot_iter_number = tot_iter_number + 1;
