@@ -8,7 +8,7 @@ h_Adap_values = zeros(size(n_values));
 average_orders_AdapM = zeros(size(n_values));
 
 %% Adaptivity Parameters
-adap_num_values = 16;  % Number of values in the range
+adap_num_values = 297;  % Number of values in the range
 adap_start_value = -10; % Starting value
 adap_end_value = -2;    % Ending value
 adap_step_size = (adap_end_value - adap_start_value) / (adap_num_values - 1);
