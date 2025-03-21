@@ -83,7 +83,7 @@ for n_index = 1:length(n_values)
             %% Error Calculation
             dW_dx = gradient(W_iter - W_intiter, dx);
            
-            err = sqrt(trapz(x, Lb .* LB .* (S_iter - S_intiter).^2 + dt * (dW_dx.^2)));
+            err = sqrt(trapz(x, (Lb .* LB .* (S_iter - S_intiter).^2 + dt *dW_dx.^2)));
             
             EA = [EA, err];  
 
